@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: Eazy HTTP Headers
 Plugin URI: http://robjscott.com/wordpress/plugins/eazy-http-headers

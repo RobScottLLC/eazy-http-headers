@@ -6,6 +6,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
  // Add eazy http settings section to general options page
+ add_action( 'admin_init', 'eazyHTTPhead_settings_init' );
  function eazyHTTPhead_settings_init() {
   // Add the section
   add_settings_section(
@@ -15,7 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
     'general'
   );
   
-  // Add the fields
+  // Add the field for X-Frame
   add_settings_field(
     'eazyHTTPhead_checkbox_frame',
     __('X-Frame-Options', 'ez-http-headers'),
@@ -24,6 +25,16 @@ if ( ! defined( 'WPINC' ) ) {
     'eazy_http_settings'
   );
   
+  // Add the field for X-XSS Protection
+  add_settings_field(
+    'eazyHTTPhead_checkbox_xss',
+    __('X-XSS-Protection', 'ez-http-headers'),
+    'eazyHTTPhead_xss_callback',
+    'general',
+    'eazy_http_settings'
+  );
+
+  //add the field for NoSniff
   add_settings_field(
     'eazyHTTPhead_checkbox_nosniff',
     __('X-Content-Type-Options', 'ez-http-headers'),
@@ -34,26 +45,29 @@ if ( ! defined( 'WPINC' ) ) {
 
   // Register the settings
   register_setting( 'general', 'eazyHTTPhead_checkbox_frame' );
+  register_setting( 'general', 'eazyHTTPhead_checkbox_xss' );  
   register_setting( 'general', 'eazyHTTPhead_checkbox_nosniff' );  
  } 
  
- add_action( 'admin_init', 'eazyHTTPhead_settings_init' );
+
  
   
  // Settings section callback
  function eazy_http_settings_callback_function() {
   _e('<p>Check the box to apply the corresponding setting.</p>', 'ez-http-headers');
-  //echo '<p>Check the box to apply the corresponding setting.</p>';
  }
- 
 
- // Setting fields callback
+ // X-Frame callback
  function eazyHTTPhead_frame_callback() {
   _e('<input name="eazyHTTPhead_checkbox_frame" id="eazyHTTPhead_checkbox_frame" type="checkbox" value="1" class="code" ' . checked( 1, get_option( 'eazyHTTPhead_checkbox_frame' ), false ) . ' /> "SAMEORIGIN"', 'ez-http-headers');
-  //echo '<input name="eazyHTTPhead_checkbox_frame" id="eazyHTTPhead_checkbox_frame" type="checkbox" value="1" class="code" ' . checked( 1, get_option( 'eazyHTTPhead_checkbox_frame' ), false ) . ' /> "SAMEORIGIN"';
  }
 
+ // X-XSS callback
+ function eazyHTTPhead_xss_callback() {
+  _e('<input name="eazyHTTPhead_checkbox_xss" id="eazyHTTPhead_checkbox_xss" type="checkbox" value="1" class="code" ' . checked( 1, get_option( 'eazyHTTPhead_checkbox_xss' ), false ) . ' /> "1; mode=block;"', 'ez-http-headers');
+ }
+
+// nosniff callback
 function eazyHTTPhead_nosniff_callback() {
   _e('<input name="eazyHTTPhead_checkbox_nosniff" id="eazyHTTPhead_checkbox_nosniff" type="checkbox" value="1" class="code" ' . checked( 1, get_option( 'eazyHTTPhead_checkbox_nosniff' ), false ) . ' /> "nosniff"', 'ez-http-headers');
-  //echo '<input name="eazyHTTPhead_checkbox_nosniff" id="eazyHTTPhead_checkbox_nosniff" type="checkbox" value="1" class="code" ' . checked( 1, get_option( 'eazyHTTPhead_checkbox_nosniff' ), false ) . ' /> "nosniff"';
  }
