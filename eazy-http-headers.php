@@ -2,8 +2,8 @@
 /*
 Plugin Name: Eazy HTTP Headers
 Plugin URI: http://robjscott.com/wordpress/plugins/eazy-http-headers
-Description:  Provides settings to activate two functions built into WordPress, send_frame_options_header() & send_nosniff_header(), allowing you to control HTTP Headers for X-Frame-Options & X-Content-Type-Options. 
-Version: 1.0.0
+Description: Allows you to control the output of HTTP Headers for X-Frame-Options, X-XSS Protection & X-Content-Type-Options with checkboxes. 
+Version: 1.1.0
 Author: Rob Scott, LLC
 Author URI: http://robjscott.com
 Text Domain: ez-http-headers

@@ -1,7 +1,7 @@
 # Eazy HTTP Headers
 ##Description
-Eazy HTTP Headers provides two check boxes for settings on the general settings page. 
-The check boxes, when checked, activate two functions built into WordPress, send_frame_options_header() & send_nosniff_header().
+Eazy HTTP Headers provides three check boxes for settings on the general settings page. 
+Two of the check boxes, activate two functions built into WordPress, send_frame_options_header() & send_nosniff_header(), while the other sets a header for X-XSS Protection.
 This allows you to control your sites HTTP Headers for X-Frame-Options & X-Content-Type-Options using functions built into WordPress functions.  
 
 ##License
@@ -21,9 +21,12 @@ securityheaders.io provides an easy to use interface to verify your sites header
 
 ##WordPress Requirements
 Requires at least: 4.5  
-Tested up to: 4.5.3  
+Tested up to: 4.6.1  
 
 ##Changelog
+= 1.1.0 =
+Added option for X-XSS Protection
+Added inline documentation
 
 = 1.0.0 =  
 Initial version of plugin.
